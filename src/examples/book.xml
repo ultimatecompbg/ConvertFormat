@@ -1,0 +1,22 @@
+<Book>
+    <title>test</title>
+    <description>proba</description>
+    <publishDate>2022/01/01</publishDate>
+    <isbn>49495</isbn>
+    <authors>
+        <Author>
+            <name>Gosho</name>
+            <surname>Petrov</surname>
+            <familyName>Petkov</familyName>
+            <birthDate>1972/01/01</birthDate>
+            <egn>7523169263</egn>
+        </Author>
+        <Author>
+            <name>Pesho</name>
+            <surname>Georgiev</surname>
+            <familyName>Goshov</familyName>
+            <birthDate>1954/01/01</birthDate>
+            <egn>7523169263</egn>
+        </Author>
+    </authors>
+</Book>

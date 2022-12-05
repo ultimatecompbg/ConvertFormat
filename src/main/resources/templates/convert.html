@@ -1,0 +1,36 @@
+
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>Converter</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p><a href="/convert">Converter</a></p>
+
+<form action="#" th:object="${book}" method="POST">
+  <div>
+    <br/>
+    <p>Title</p>
+    <td><input value="" name="title" id="title"/></td>
+    <p>Description</p>
+    <td><input value="" name="description" id="description"/></td>
+    <p>publishDate</p>
+    <td><input value="" name="publishDate" id="publishDate"/></td>
+    <p>ISBN</p>
+    <td><input value="" name="ISBN" id="ISBN"/></td>
+    <p>Authors</p>
+    <form th:object="${book.authors}">
+
+    </form>
+    <p>Convert to</p>
+    <td><select name="convertTo" id="convertTo">
+      <option value="xml">XML</option>
+      <option value="json">JSON</option>
+    </select></td>
+    <br/>
+    <br/>
+    <input type="submit" id="convert" value="Convert"></input>
+  </div>
+</form>
+</body>
+</html>

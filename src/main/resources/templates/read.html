@@ -1,0 +1,26 @@
+
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Converter</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p><a>Converter</a></p>
+
+<form action="#" method="POST">
+    <div>
+        <br/>
+        <p>Text</p>
+        <td><textarea value="" name="text" id="text"></textarea></td>
+        <p>Convert from</p>
+        <td><select name="convertFrom" id="convertFrom">
+            <option value="xml">XML</option>
+            <option value="json">JSON</option>
+        </select></td>
+        <br/>
+        <br/>
+        <input type="submit" id="convert" value="Convert"></input>
+    </div>
+</form>
+</body>
+</html>
