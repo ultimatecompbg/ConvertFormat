@@ -14,7 +14,6 @@ public class Author {
     private String surname;
     private String familyName;
     private Date birthDate;
-    @Egn
     private String egn;
     public Author(){
 

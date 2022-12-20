@@ -2,6 +2,7 @@ package com.ibs.ConvertFormat.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ibs.ConvertFormat.model.Book;
+import com.ibs.ConvertFormat.service.bookvalidation.BookValidator;
 import com.ibs.ConvertFormat.service.print.PrintJSON;
 import com.ibs.ConvertFormat.service.print.PrintXML;
 import com.ibs.ConvertFormat.service.read.ReadJSON;
@@ -26,6 +27,8 @@ public class ConvertController implements WebMvcConfigurer {
     ReadJSON readJSON;
     @Autowired
     ReadXML readXML;
+    @Autowired
+    BookValidator bookValidator;
     @GetMapping("/read")
     public String showReadForm() {
         return "read";
@@ -33,13 +36,36 @@ public class ConvertController implements WebMvcConfigurer {
     @PostMapping("/read")
     public String read(@RequestParam(value = "convertFrom") String convertFrom, String text, Model model){
         if("json".equals(convertFrom)){
-            Book newBook = readJSON.read(text);
-            model.addAttribute("result", newBook);
-            return "converted";
+
+            Book newBook;
+            try{
+                newBook = bookValidator.validBook(readJSON.read(text));
+                model.addAttribute("result", newBook);
+                return "converted";
+            }
+            catch(RuntimeException e) {
+                model.addAttribute("error", e.getMessage());
+                return "invalid-egn";
+            }
+            finally {
+
+            }
         }else if("xml".equals(convertFrom)){
-            Book newBook = readXML.read(text);
-            model.addAttribute("result", newBook);
-            return "converted";
+            Book newBook;
+            try{
+                newBook = bookValidator.validBook(readXML.read(text));
+                model.addAttribute("result", newBook);
+                return "converted";
+            }
+            catch(RuntimeException e) {
+                model.addAttribute("error", e.getMessage());
+                return "500error";
+            }
+            finally {
+
+            }
+
+
         }
         return "read";
 

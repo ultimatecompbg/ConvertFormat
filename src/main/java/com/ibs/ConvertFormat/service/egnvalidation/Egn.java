@@ -8,7 +8,7 @@ import java.lang.annotation.*;
 @Target( { ElementType.METHOD, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Constraint(validatedBy = EgnValidator.class)
+//@Constraint(validatedBy = EgnValidator.class)
 public @interface Egn {
     public String message() default "Invalid egn";
     public Class<?>[] groups() default {};
